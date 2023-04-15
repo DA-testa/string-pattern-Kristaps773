@@ -59,4 +59,3 @@ def compute_hash(text, prime, base):
 # this part launches the functions
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
-
