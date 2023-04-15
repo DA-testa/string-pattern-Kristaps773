@@ -1,6 +1,5 @@
 # python3
 # Krists Kristaps Dūda 221RDB518 10.grupa
-import compute_hash
 
 
 def read_input(filename):
@@ -11,14 +10,15 @@ def read_input(filename):
         text = input().rstrip()
     elif input_type == 'F':
         try:
+            filename = input().rstrip()
             with open(f"./tests/{filename}") as f:
-                content = f.readline()
+                pattern = f.readline().rstrip()
+                text = f.readline().rstrip()
         except FileNotFoundError:
             raise FileNotFoundError(f"File {filename} not found")
         except: 
             raise ValueError(f"Error reading {filename}")
-        pattern = content[0].strip()
-        text = content[1].strip()  
+ 
     else:
         raise ValueError(f"Invalid input type: {input}")
     
@@ -44,6 +44,11 @@ def get_occurrences(pattern, text):
             occur.add(i)
     return occur
 
+def compute_hash(text, prime, base):
+    hash_val = 0
+    for char in reversed(text):
+        hash_val = (hash_val * base + ord(char)) % prime
+    return hash_val
 
 # this part launches the functions
 if __name__ == '__main__':
