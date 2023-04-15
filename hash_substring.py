@@ -1,8 +1,6 @@
 # python3
 # Krists Kristaps Dūda 221RDB518 10.grupa
 
-
-
 def read_input():
     input_type = input().rstrip()
 
@@ -19,6 +17,7 @@ def read_file(filename):
         with open(f"./tests/{filename}") as f:
             pattern = f.readline().rstrip()
             text = f.readline().rstrip()
+            return pattern, text
     except FileNotFoundError:
         raise FileNotFoundError(f"File {filename} not found")
     except: 
@@ -59,3 +58,4 @@ def compute_hash(text, prime, base):
 # this part launches the functions
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
+
