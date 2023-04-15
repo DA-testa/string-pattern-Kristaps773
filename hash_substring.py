@@ -5,12 +5,12 @@ import compute_hash
 
 def read_input(filename):
     
-    input = input().rstrip()
+    input_type = input().rstrip()
 
-    if input == 'I':
+    if input_type == 'I':
         pattern = input().rstrip()
         text = input().rstrip()
-    elif input == 'F':
+    elif input_type == 'F':
         try:
             with open(f"./tests/{filename}") as f:
                 content = f.readline()
@@ -39,7 +39,7 @@ def read_input(filename):
     # return both lines in one return
     
     # this is the sample return, notice the rstrip function
-    return (input().rstrip(), input().rstrip())
+    #return (input().rstrip(), input().rstrip())
 
 def print_occurrences(output):
     # this function should control output, it doesn't 
