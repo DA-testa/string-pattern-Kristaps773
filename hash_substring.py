@@ -40,7 +40,7 @@ def get_occurrences(pattern, text):
     pattern_len, text_len = len(pattern), len(text)
     pattern_hash = compute_hash(pattern, prime, base)
     text_hash = compute_hash(text[:pattern_len], prime, base)
-    occur = set()
+    occur = []
     if pattern_hash == text_hash and pattern == text[:pattern_len]:
         occur.add(0)
     for i in range(1, text_len - pattern_len + 1):
