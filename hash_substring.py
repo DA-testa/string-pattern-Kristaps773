@@ -42,11 +42,11 @@ def get_occurrences(pattern, text):
     text_hash = compute_hash(text[:pattern_len], prime, base)
     occur = []
     if pattern_hash == text_hash and pattern == text[:pattern_len]:
-        occur.add(0)
+        occur.append(0)
     for i in range(1, text_len - pattern_len + 1):
         text_hash = ((text_hash * base) % prime + ord(text[i + pattern_len -1]) - (ord(text[i -1]) * pow(base, pattern_len, prime)) % prime) % prime
         if pattern_hash == text_hash and pattern == text[i:i + pattern_len]:
-            occur.add(i)
+            occur.append(i)
     return occur
 
 def compute_hash(text, prime, base):
