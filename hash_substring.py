@@ -7,7 +7,7 @@ def read_input():
     input_type = input().rstrip()
 
     if input_type == 'I':
-        read_user_input()
+        return read_user_input()
     elif input_type == 'F':
         filename = "06"
         return read_file(filename)
