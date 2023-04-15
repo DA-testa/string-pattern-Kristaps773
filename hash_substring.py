@@ -40,22 +40,24 @@ def get_occurrences(pattern, text):
     pattern_len, text_len = len(pattern), len(text)
     pattern_hash = compute_hash(pattern, prime, base)
     text_hash = compute_hash(text[:pattern_len], prime, base)
-    occur = []
+    occur = set()
     if pattern_hash == text_hash and pattern == text[:pattern_len]:
-        occur.append(0)
+        occur.add(0)
     for i in range(1, text_len - pattern_len + 1):
+        
         text_hash = ((text_hash * base) % prime + ord(text[i + pattern_len -1]) - (ord(text[i -1]) * pow(base, pattern_len, prime)) % prime) % prime
         if pattern_hash == text_hash and pattern == text[i:i + pattern_len]:
-            occur.append(i)
+            occur.add(i)
     return occur
 
 def compute_hash(text, prime, base):
     hash_val = 0
-    for char in reversed(text):
+    for char in text:
         hash_val = (hash_val * base + ord(char)) % prime
     return hash_val
 
 # this part launches the functions
 if __name__ == '__main__':
-    print_occurrences(get_occurrences(*read_input()))
-
+    pattern, text = read_input()
+    occurrences = get_occurrences(pattern, text)
+    print_occurrences(occurrences)
