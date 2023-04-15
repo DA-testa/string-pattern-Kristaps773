@@ -3,28 +3,33 @@
 
 
 
-def read_input(filename):
+def read_input():
     input_type = input().rstrip()
 
     if input_type == 'I':
-        pattern = input().rstrip()
-        text = input().rstrip()
+        read_user_input()
     elif input_type == 'F':
-        try:
-            filename = input().rstrip()
-            with open(f"./tests/{filename}") as f:
-                pattern = f.readline().rstrip()
-                text = f.readline().rstrip()
-        except FileNotFoundError:
-            raise FileNotFoundError(f"File {filename} not found")
-        except: 
-            raise ValueError(f"Error reading {filename}")
- 
+        filename = "06"
+        return read_file(filename)
     else:
-        raise ValueError(f"Invalid input type: {input}")
+        raise ValueError(f"Invalid input type: {input_type}")
+
+def read_file(filename):
+    try:
+        with open(f"./tests/{filename}") as f:
+            pattern = f.readline().rstrip()
+            text = f.readline().rstrip()
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {filename} not found")
+    except: 
+        raise ValueError(f"Error reading {filename}")
+
+def read_user_input():
+    pattern = input().rstrip()
+    text = input().rstrip()
     
     return pattern, text
-   
+    
 
 def print_occurrences(output):
     print(' '.join(map(str, output)))
