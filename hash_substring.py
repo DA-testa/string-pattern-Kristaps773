@@ -2,6 +2,7 @@
 # Krists Kristaps Dūda 221RDB518 10.grupa
 
 
+
 def read_input(filename):
     input_type = input().rstrip()
 
