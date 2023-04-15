@@ -31,6 +31,7 @@ def read_user_input():
     
 
 def print_occurrences(output):
+    output = sorted(output)
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
@@ -61,3 +62,4 @@ if __name__ == '__main__':
     pattern, text = read_input()
     occurrences = get_occurrences(pattern, text)
     print_occurrences(occurrences)
+
